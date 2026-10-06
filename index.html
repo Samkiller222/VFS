@@ -3,31 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Application Guide Skeleton</title>
+  <title>Residence Permit Guide</title>
   <style>
     :root {
       --bg: #ffffff;
-      --surface: #f5f7f9;
-      --border: #e1e6ea;
-      --bone: #e4e8ec;
-      --bone-hi: #f1f4f6;
-      --text: #1f2a33;
-      --muted: #62707c;
-      --accent: #2b4a6f;
-      --radius: 6px;
-      --max: 1180px;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #12161a;
-        --surface: #1a2026;
-        --border: #2a323a;
-        --bone: #262e36;
-        --bone-hi: #313a43;
-        --text: #e6ebef;
-        --muted: #97a3ad;
-        --accent: #7fa6d1;
-      }
+      --surface: #f2f6f9;
+      --border: #dbe3ea;
+      --text: #1b2733;
+      --muted: #5b6b7a;
+      --brand: #16324f;
+      --accent: #0f8b8d;
+      --accent-dark: #0b6e70;
+      --notice: #dff1f4;
+      --notice-border: #a9d9df;
+      --max: 960px;
     }
 
     * { box-sizing: border-box; }
@@ -35,263 +24,312 @@
       margin: 0;
       background: var(--bg);
       color: var(--text);
-      font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      font: 15px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     }
+    a { color: var(--accent); }
     .wrap { max-width: var(--max); margin: 0 auto; padding: 0 16px; }
-
-    /* Skeleton "bone" placeholder with shimmer */
-    .bone {
-      display: block;
-      background: linear-gradient(90deg, var(--bone) 25%, var(--bone-hi) 37%, var(--bone) 63%);
-      background-size: 400% 100%;
-      animation: shimmer 1.4s ease infinite;
-      border-radius: var(--radius);
-      height: 14px;
-    }
-    .bone.circle { border-radius: 50%; }
-    .bone.pill { border-radius: 999px; }
-    @keyframes shimmer { 0% { background-position: 100% 50%; } 100% { background-position: 0 50%; } }
-    @media (prefers-reduced-motion: reduce) { .bone { animation: none; } }
-
-    .sr-only {
-      position: absolute; width: 1px; height: 1px; overflow: hidden;
-      clip: rect(0 0 0 0); white-space: nowrap;
-    }
     .skip-link { position: absolute; left: -999px; }
     .skip-link:focus { left: 16px; top: 8px; background: var(--bg); padding: 8px; z-index: 10; }
 
-    /* 1. Top bar */
-    .topbar { border-bottom: 1px solid var(--border); }
-    .topbar .wrap { display: flex; align-items: center; gap: 16px; height: 64px; }
-    .route { display: flex; align-items: center; gap: 8px; flex: 1; min-width: 0; }
-    .topbar-actions { display: flex; align-items: center; gap: 12px; }
+    /* Top bar */
+    .topbar .wrap { display: flex; align-items: center; gap: 20px; height: 68px; }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--brand); font-weight: 700; flex: none; }
+    .logo-mark {
+      width: 36px; height: 36px; border-radius: 8px; background: var(--brand); color: #fff;
+      display: grid; place-items: center; font-size: 15px;
+    }
+    .route {
+      flex: 1; display: flex; align-items: center; gap: 12px; min-width: 0;
+      background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+      padding: 8px 14px; font-size: 13px; color: var(--muted);
+    }
+    .route strong { color: var(--text); font-weight: 600; }
+    .route .arrow { margin: 0 auto; color: var(--accent); }
+    .actions { display: flex; align-items: center; gap: 12px; margin-left: auto; }
+    .icon-btn { background: none; border: 0; cursor: pointer; color: var(--brand); padding: 6px; }
+    .lang {
+      border: 1px solid var(--border); background: var(--bg); border-radius: 6px;
+      padding: 6px 10px; font: inherit; font-size: 13px; color: var(--text);
+    }
 
-    /* 2. Notice banner */
-    .notice { background: var(--surface); border-bottom: 1px solid var(--border); }
-    .notice .wrap { display: flex; align-items: center; gap: 16px; padding-top: 12px; padding-bottom: 12px; }
-    .notice .lines { flex: 1; display: grid; gap: 8px; }
+    /* Notice */
+    .notice { background: var(--notice); border-top: 1px solid var(--notice-border); border-bottom: 1px solid var(--notice-border); }
+    .notice .wrap { display: flex; align-items: center; gap: 14px; padding-top: 12px; padding-bottom: 12px; font-size: 13px; }
+    .notice .icon { flex: none; width: 22px; height: 22px; border-radius: 50%; background: var(--brand); color: #fff; display: grid; place-items: center; font-weight: 700; font-size: 13px; }
+    .notice p { margin: 0; flex: 1; }
+    .notice button {
+      flex: none; background: var(--bg); border: 1px solid var(--notice-border); border-radius: 6px;
+      padding: 6px 14px; font: inherit; cursor: pointer;
+    }
+    .notice[hidden] { display: none; }
 
-    /* 3. Main nav */
+    /* Main nav */
     .mainnav { border-bottom: 1px solid var(--border); }
-    .mainnav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 28px; overflow-x: auto; }
-    .mainnav li { padding: 18px 0; flex: none; }
-    .mainnav li.active { box-shadow: inset 0 -3px 0 var(--accent); }
+    .mainnav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 24px; overflow-x: auto; }
+    .mainnav li { flex: none; }
+    .mainnav a { display: block; padding: 14px 0; color: var(--text); text-decoration: none; font-size: 14px; }
+    .mainnav a:hover { color: var(--accent); }
+    .mainnav a[aria-current] { color: var(--accent); box-shadow: inset 0 -3px 0 var(--accent); }
 
-    /* 4. Breadcrumb + heading */
-    .crumbs { display: flex; align-items: center; gap: 10px; padding: 20px 0 8px; }
-    .page-head { padding: 8px 0 24px; display: grid; gap: 14px; }
+    /* Breadcrumb */
+    .crumbs { background: var(--surface); font-size: 12px; }
+    .crumbs ol { list-style: none; margin: 0; padding: 10px 0; display: flex; gap: 8px; }
+    .crumbs li + li::before { content: "→"; margin-right: 8px; color: var(--muted); }
 
-    /* 5. Tabs */
-    .tabs { display: flex; gap: 24px; border-bottom: 1px solid var(--border); margin-bottom: 28px; }
-    .tabs span { padding: 12px 0; }
-    .tabs .active { box-shadow: inset 0 -3px 0 var(--accent); }
+    /* Page head */
+    .page-head { padding: 32px 0 40px; }
+    .page-head h1 { margin: 0 0 6px; font-size: 32px; font-weight: 500; color: var(--brand); line-height: 1.25; }
+    .page-head p { margin: 0; font-size: 17px; color: var(--muted); }
 
-    /* 6. Step-by-step accordion */
-    .section-head { display: grid; gap: 10px; margin-bottom: 20px; }
-    .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
-    .step { border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg); }
-    .step > button {
-      all: unset; box-sizing: border-box; cursor: pointer;
-      display: flex; align-items: center; gap: 16px; width: 100%; padding: 18px;
+    /* Tabs */
+    .tabs { display: flex; border-bottom: 1px solid var(--border); margin-bottom: 14px; }
+    .tabs span { padding: 10px 0; font-weight: 500; color: var(--brand); box-shadow: inset 0 -3px 0 var(--accent); }
+    .intro { color: var(--muted); font-size: 13px; margin: 0 0 32px; }
+
+    /* Steps */
+    .steps { list-style: none; margin: 0; padding: 0; }
+    .step { border-bottom: 1px solid var(--border); padding: 28px 0; }
+    .step-head { display: flex; gap: 22px; align-items: flex-start; }
+    .step-num { flex: none; width: 22px; font-size: 24px; line-height: 1.1; color: var(--accent); }
+    .step-titles { flex: 1; }
+    .step-titles h3 { margin: 0; font-size: 17px; font-weight: 500; color: var(--brand); }
+    .step-titles p { margin: 2px 0 0; color: var(--muted); font-size: 14px; }
+    .toggle {
+      flex: none; background: none; border: 0; padding: 0; cursor: pointer;
+      color: var(--accent); text-decoration: underline; font: inherit; font-size: 13px;
     }
-    .step > button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: var(--radius); }
-    .step-num {
-      flex: none; width: 36px; height: 36px; border-radius: 50%;
-      display: grid; place-items: center; font-weight: 600;
-      background: var(--surface); color: var(--muted); border: 1px solid var(--border);
+    .toggle .chev { display: inline-block; transition: transform .2s; }
+    .step[data-open="true"] .toggle .chev { transform: rotate(180deg); }
+    .step-body { display: none; padding: 18px 0 0 44px; font-size: 14px; }
+    .step-body p { margin: 0 0 8px; }
+    .step[data-open="true"] .step-body { display: block; }
+
+    /* Cards */
+    .cards {
+      display: grid; grid-template-columns: repeat(3, 1fr); margin: 40px 0 64px;
+      box-shadow: 0 2px 10px rgba(22, 50, 79, .1); border-radius: 8px; overflow: hidden;
     }
-    .step-titles { flex: 1; display: grid; gap: 8px; min-width: 0; }
-    .chev { flex: none; color: var(--muted); transition: transform .2s; }
-    .step[open-state="true"] .chev { transform: rotate(180deg); }
-    .step-body { display: none; padding: 0 18px 20px 70px; gap: 10px; }
-    .step[open-state="true"] .step-body { display: grid; }
-
-    /* 7. CTA cards */
-    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 48px 0; }
-    .card {
-      border: 1px solid var(--border); border-radius: var(--radius); padding: 24px;
-      display: grid; gap: 12px; background: var(--surface);
+    .card { padding: 20px; background: var(--bg); }
+    .card + .card { border-left: 1px solid var(--border); }
+    .card h2 { margin: 0; font-size: 14px; font-weight: 500; }
+    .card p { margin: 4px 0 16px; color: var(--muted); font-size: 13px; }
+    .btn {
+      display: flex; justify-content: space-between; align-items: center;
+      background: var(--accent); color: #fff; text-decoration: none;
+      padding: 9px 12px; border-radius: 4px; font-size: 13px;
     }
-    .card .bone.btn { height: 40px; width: 120px; margin-top: 8px; }
+    .btn:hover { background: var(--accent-dark); }
 
-    /* 8. Footer */
-    footer { border-top: 1px solid var(--border); background: var(--surface); padding: 32px 0; }
-    .footer-links { display: flex; flex-wrap: wrap; gap: 14px 28px; margin-bottom: 24px; }
-    .footer-meta { display: grid; gap: 8px; }
+    /* Footer */
+    footer { background: var(--surface); padding: 32px 0 24px; font-size: 12px; }
+    footer ul { list-style: none; margin: 0 0 20px; padding: 0; display: flex; flex-wrap: wrap; gap: 10px 18px; }
+    footer a { color: var(--brand); }
+    footer ul.secondary a { color: var(--muted); }
+    footer .copy { color: var(--muted); margin: 8px 0 0; text-align: center; }
 
-    /* 9. Cookie banner */
-    .cookie {
-      position: fixed; left: 16px; right: 16px; bottom: 16px; max-width: 760px; margin: 0 auto;
-      background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius);
-      box-shadow: 0 6px 24px rgba(0,0,0,.12); padding: 16px;
-      display: flex; gap: 16px; align-items: center;
-    }
-    .cookie .lines { flex: 1; display: grid; gap: 8px; }
-    .cookie .btns { display: flex; gap: 8px; flex: none; }
-    .cookie[hidden] { display: none; }
-
-    @media (max-width: 860px) {
+    @media (max-width: 760px) {
+      .route { display: none; }
       .cards { grid-template-columns: 1fr; }
-      .hide-sm { display: none !important; }
-      .step-body { padding-left: 18px; }
-      .cookie { flex-direction: column; align-items: stretch; }
+      .card + .card { border-left: 0; border-top: 1px solid var(--border); }
+      .step-body { padding-left: 0; }
+      .page-head h1 { font-size: 26px; }
     }
   </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
 
-  <!-- 1. Top bar: logo · origin → destination · search · language -->
-  <div class="topbar">
+  <header class="topbar">
     <div class="wrap">
-      <span class="bone" style="width:110px;height:32px" aria-label="Logo placeholder"></span>
-      <div class="route hide-sm">
-        <span class="bone circle" style="width:22px;height:22px"></span>
-        <span class="bone" style="width:140px"></span>
-        <span aria-hidden="true" style="color:var(--muted)">&rarr;</span>
-        <span class="bone circle" style="width:22px;height:22px"></span>
-        <span class="bone" style="width:200px"></span>
+      <a class="logo" href="#"><span class="logo-mark">RG</span>Residence Guide</a>
+      <div class="route" aria-label="Selected route">
+        <span>From <strong>Country of residence</strong></span>
+        <span class="arrow" aria-hidden="true">✈</span>
+        <span>To <strong>Destination country</strong></span>
       </div>
-      <div class="topbar-actions" style="margin-left:auto">
-        <span class="bone circle" style="width:28px;height:28px" aria-label="Search"></span>
-        <span class="bone pill" style="width:96px;height:32px" aria-label="Language"></span>
-        <span class="bone" style="width:28px;height:22px;display:none" aria-label="Menu"></span>
+      <div class="actions">
+        <button class="icon-btn" type="button" aria-label="Search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        </button>
+        <select class="lang" aria-label="Language"><option>English</option></select>
       </div>
+    </div>
+  </header>
+
+  <div class="notice" id="notice" role="note">
+    <div class="wrap">
+      <span class="icon" aria-hidden="true">i</span>
+      <p>This guide covers temporary residence permits and long-stay visas. Have your online application reference number ready before booking. <a href="#">Learn more</a></p>
+      <button type="button" onclick="document.getElementById('notice').hidden = true">Dismiss</button>
     </div>
   </div>
 
-  <!-- 2. Notice banner -->
-  <div class="notice" role="note">
-    <div class="wrap">
-      <div class="lines">
-        <span class="bone" style="width:92%"></span>
-        <span class="bone" style="width:60%"></span>
-      </div>
-      <span class="bone pill" style="width:90px;height:34px;flex:none" aria-label="Dismiss"></span>
-    </div>
-  </div>
-
-  <!-- 3. Main navigation (6 items) -->
   <nav class="mainnav" aria-label="Main">
     <div class="wrap">
       <ul>
-        <li><span class="bone" style="width:48px"></span></li>
-        <li class="active"><span class="bone" style="width:210px"></span></li>
-        <li><span class="bone" style="width:180px"></span></li>
-        <li><span class="bone" style="width:140px"></span></li>
-        <li><span class="bone" style="width:110px"></span></li>
-        <li><span class="bone" style="width:150px"></span></li>
+        <li><a href="#">Home</a></li>
+        <li><a href="#" aria-current="page">Temporary residence permit</a></li>
+        <li><a href="#">Long-stay visa</a></li>
+        <li><a href="#">Appointments</a></li>
+        <li><a href="#">Visiting a centre</a></li>
+        <li><a href="#">Application status</a></li>
       </ul>
     </div>
   </nav>
 
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <div class="wrap">
+      <ol>
+        <li><a href="#">Home</a></li>
+        <li><a href="#" aria-current="page">Temporary residence permit</a></li>
+      </ol>
+    </div>
+  </nav>
+
   <main id="main" class="wrap">
-    <!-- 4. Breadcrumb + page title -->
-    <nav class="crumbs" aria-label="Breadcrumb">
-      <span class="bone" style="width:44px"></span>
-      <span aria-hidden="true" style="color:var(--muted)">&rsaquo;</span>
-      <span class="bone" style="width:220px"></span>
-    </nav>
     <div class="page-head">
-      <span class="bone" style="width:min(520px,90%);height:34px" role="heading" aria-level="1" aria-label="Page title"></span>
-      <span class="bone" style="width:min(320px,70%)"></span>
+      <h1>Temporary residence permit</h1>
+      <p>Everything you need to get your application started</p>
     </div>
 
-    <!-- 5. Tabs -->
-    <div class="tabs" role="tablist">
-      <span class="active" role="tab" aria-selected="true"><span class="bone" style="width:140px"></span></span>
-    </div>
+    <div class="tabs"><span>How it works</span></div>
+    <p class="intro">Six steps from application to collecting your permit.</p>
 
-    <!-- 6. Step-by-step guide -->
-    <section aria-label="Step-by-step guide">
-      <div class="section-head">
-        <span class="bone" style="width:260px;height:24px"></span>
-        <span class="bone" style="width:220px"></span>
-      </div>
-      <ol class="steps" id="steps"></ol>
-    </section>
+    <ol class="steps" id="steps">
+      <li class="step" data-open="true">
+        <div class="step-head">
+          <span class="step-num">1</span>
+          <div class="step-titles">
+            <h3>Start your application</h3>
+            <p>Submit your request online</p>
+          </div>
+          <button class="toggle" type="button" aria-expanded="true">View more <span class="chev">▾</span></button>
+        </div>
+        <div class="step-body">
+          <p>Complete the online application form on the official migration portal. Step-by-step instructions are available <a href="#">here</a>.</p>
+          <p>Check which <a href="#">permit type</a> fits your situation and make sure you meet the eligibility requirements.</p>
+          <p>We can help with the practical steps of the process, but we can't advise you on which permit category to choose.</p>
+        </div>
+      </li>
+      <li class="step" data-open="true">
+        <div class="step-head">
+          <span class="step-num">2</span>
+          <div class="step-titles">
+            <h3>Pay the fees</h3>
+            <p>See what you need to pay and how</p>
+          </div>
+          <button class="toggle" type="button" aria-expanded="true">View more <span class="chev">▾</span></button>
+        </div>
+        <div class="step-body">
+          <p>The government fee is paid directly to the relevant tax authority, either online or at a bank.</p>
+          <p>A separate service fee is paid in local currency when you attend your appointment.</p>
+          <p>Fees are not refunded, whatever the outcome of your application.</p>
+        </div>
+      </li>
+      <li class="step" data-open="true">
+        <div class="step-head">
+          <span class="step-num">3</span>
+          <div class="step-titles">
+            <h3>Book an appointment</h3>
+            <p>Pick a centre and a time that suits you</p>
+          </div>
+          <button class="toggle" type="button" aria-expanded="true">View more <span class="chev">▾</span></button>
+        </div>
+        <div class="step-body">
+          <p>Once your online application is submitted, <a href="#">book an appointment</a> to give your biometrics. A confirmation email will follow — bring it with you on the day.</p>
+          <p>Applying as a family or group? Each person needs their own appointment, and you should mention that you're part of a group.</p>
+        </div>
+      </li>
+      <li class="step" data-open="true">
+        <div class="step-head">
+          <span class="step-num">4</span>
+          <div class="step-titles">
+            <h3>Attend your appointment</h3>
+            <p>Give your biometrics in person</p>
+          </div>
+          <button class="toggle" type="button" aria-expanded="true">View more <span class="chev">▾</span></button>
+        </div>
+        <div class="step-body">
+          <p>Your identity will be checked against the documents uploaded with your online application, so bring the originals. If you paid the government fee online, make sure the payment receipt is attached to your application.</p>
+          <p>After your biometrics are taken, the migration authority may invite you to a short remote interview.</p>
+          <p>Read <a href="#">what to expect on the day</a>.</p>
+        </div>
+      </li>
+      <li class="step" data-open="true">
+        <div class="step-head">
+          <span class="step-num">5</span>
+          <div class="step-titles">
+            <h3>Follow your application</h3>
+            <p>Check progress at any time</p>
+          </div>
+          <button class="toggle" type="button" aria-expanded="true">View more <span class="chev">▾</span></button>
+        </div>
+        <div class="step-body">
+          <p>Progress updates and the final decision appear in your <a href="#">online portal account</a> and are also sent by email.</p>
+          <p>Centre staff can't share any extra information about where your application is in the process.</p>
+        </div>
+      </li>
+      <li class="step" data-open="true">
+        <div class="step-head">
+          <span class="step-num">6</span>
+          <div class="step-titles">
+            <h3>Collect your permit</h3>
+            <p>Bring the ID document you applied with</p>
+          </div>
+          <button class="toggle" type="button" aria-expanded="true">View more <span class="chev">▾</span></button>
+        </div>
+        <div class="step-body">
+          <p>When your permit card arrives, collect it in person and bring your original passport so your identity can be confirmed.</p>
+          <p>Check the centre's opening hours before you go.</p>
+        </div>
+      </li>
+    </ol>
 
-    <!-- 7. Call-to-action cards -->
     <section class="cards" aria-label="Quick actions">
       <div class="card">
-        <span class="bone" style="width:70%;height:22px"></span>
-        <span class="bone" style="width:85%"></span>
-        <span class="bone btn"></span>
+        <h2>Book an appointment</h2>
+        <p>Choose a date and time</p>
+        <a class="btn" href="#">Book now <span aria-hidden="true">▸</span></a>
       </div>
       <div class="card">
-        <span class="bone" style="width:75%;height:22px"></span>
-        <span class="bone" style="width:80%"></span>
-        <span class="bone btn"></span>
+        <h2>Application status</h2>
+        <p>See where your application is</p>
+        <a class="btn" href="#">Check status <span aria-hidden="true">▸</span></a>
       </div>
       <div class="card">
-        <span class="bone" style="width:55%;height:22px"></span>
-        <span class="bone" style="width:78%"></span>
-        <span class="bone btn"></span>
+        <h2>Find a centre</h2>
+        <p>Locations and opening hours</p>
+        <a class="btn" href="#">Find a centre <span aria-hidden="true">▸</span></a>
       </div>
     </section>
   </main>
 
-  <!-- 8. Footer: 8 links + copyright -->
   <footer>
     <div class="wrap">
-      <div class="footer-links">
-        <span class="bone" style="width:110px"></span>
-        <span class="bone" style="width:80px"></span>
-        <span class="bone" style="width:95px"></span>
-        <span class="bone" style="width:75px"></span>
-        <span class="bone" style="width:130px"></span>
-        <span class="bone" style="width:95px"></span>
-        <span class="bone" style="width:100px"></span>
-        <span class="bone" style="width:140px"></span>
-      </div>
-      <div class="footer-meta">
-        <span class="bone" style="width:min(420px,90%)"></span>
-        <span class="bone" style="width:min(360px,80%)"></span>
-      </div>
+      <ul>
+        <li><a href="#">About us</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Refunds</a></li>
+      </ul>
+      <ul class="secondary">
+        <li><a href="#">Disclaimer</a></li>
+        <li><a href="#">Terms</a></li>
+        <li><a href="#">Cookies</a></li>
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Accessibility</a></li>
+      </ul>
+      <p class="copy">© 2026 Residence Guide. All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- 9. Cookie consent banner -->
-  <div class="cookie" id="cookie" role="dialog" aria-label="Cookie consent">
-    <div class="lines">
-      <span class="bone" style="width:95%"></span>
-      <span class="bone" style="width:70%"></span>
-    </div>
-    <div class="btns">
-      <button class="bone pill" style="width:110px;height:36px;border:0;cursor:pointer" aria-label="Close banner" onclick="document.getElementById('cookie').hidden=true"></button>
-      <span class="bone pill" style="width:110px;height:36px"></span>
-    </div>
-  </div>
-
   <script>
-    // Six collapsible steps; each has a title, subtitle and placeholder body.
-    const steps = document.getElementById('steps');
-    const widths = [[220, 300], [160, 260], [200, 320], [230, 220], [200, 340], [280, 380]];
-    widths.forEach(([t, s], i) => {
-      const li = document.createElement('li');
-      li.className = 'step';
-      li.setAttribute('open-state', i === 0 ? 'true' : 'false');
-      li.innerHTML = `
-        <button type="button" aria-expanded="${i === 0}">
-          <span class="step-num">${i + 1}</span>
-          <span class="step-titles">
-            <span class="bone" style="width:min(${t}px,80%);height:18px"></span>
-            <span class="bone" style="width:min(${s}px,95%)"></span>
-          </span>
-          <span class="chev" aria-hidden="true">&#9662;</span>
-        </button>
-        <div class="step-body">
-          <span class="bone" style="width:96%"></span>
-          <span class="bone" style="width:88%"></span>
-          <span class="bone" style="width:92%"></span>
-          <span class="bone" style="width:54%"></span>
-        </div>`;
-      li.querySelector('button').addEventListener('click', e => {
-        const open = li.getAttribute('open-state') !== 'true';
-        li.setAttribute('open-state', open);
-        e.currentTarget.setAttribute('aria-expanded', open);
+    document.querySelectorAll('.step').forEach(step => {
+      const btn = step.querySelector('.toggle');
+      btn.addEventListener('click', () => {
+        const open = step.dataset.open !== 'true';
+        step.dataset.open = open;
+        btn.setAttribute('aria-expanded', open);
       });
-      steps.appendChild(li);
     });
   </script>
 </body>
