@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Residence Permit Guide</title>
+  <title>Work Permit Guide</title>
   <style>
     :root {
       --bg: #ffffff;
@@ -104,6 +104,14 @@
     .step-body p { margin: 0 0 8px; }
     .step[data-open="true"] .step-body { display: block; }
 
+    .substeps { margin: 0; padding-left: 20px; }
+    .substeps li { margin: 0 0 10px; padding-left: 4px; }
+    .substeps li::marker { color: var(--accent); font-weight: 600; }
+    .substeps strong { color: var(--brand); font-weight: 600; }
+    .refused { margin: 32px 0 0; padding: 18px 20px; background: var(--surface); border-left: 4px solid var(--brand); border-radius: 4px; }
+    .refused h2 { margin: 0 0 4px; font-size: 16px; font-weight: 600; color: var(--brand); }
+    .refused p { margin: 0; font-size: 14px; }
+
     /* Cards */
     .cards {
       display: grid; grid-template-columns: repeat(3, 1fr); margin: 40px 0 64px;
@@ -181,109 +189,113 @@
     <div class="wrap">
       <ol>
         <li><a href="#">Home</a></li>
-        <li><a href="#" aria-current="page">Temporary residence permit</a></li>
+        <li><a href="#">Temporary residence permit</a></li>
+        <li><a href="#" aria-current="page">Work permit from abroad</a></li>
       </ol>
     </div>
   </nav>
 
   <main id="main" class="wrap">
     <div class="page-head">
-      <h1>Temporary residence permit</h1>
-      <p>Everything you need to get your application started</p>
+      <h1>Applying for a work permit from abroad</h1>
+      <p>Step-by-step instructions for employees still outside Malta</p>
     </div>
 
     <div class="tabs"><span>How it works</span></div>
-    <p class="intro">Six steps from application to collecting your permit.</p>
+    <p class="intro">Five phases from your employer starting the application to collecting your card.</p>
 
     <ol class="steps" id="steps">
       <li class="step" data-open="true">
         <div class="step-head">
           <span class="step-num">1</span>
           <div class="step-titles">
-            <h3>Start your application</h3>
-            <p>Submit your request online</p>
+            <h3>Apply and pay</h3>
+            <p>Your employer starts, you finish, and the fee is paid</p>
           </div>
           <button class="toggle" type="button" aria-expanded="true">View more <span class="chev">▾</span></button>
         </div>
         <div class="step-body">
-          <p>Complete the online application form on the official migration portal. Step-by-step instructions are available <a href="#">here</a>.</p>
-          <p>Check which <a href="#">permit type</a> fits your situation and make sure you meet the eligibility requirements.</p>
-          <p>We can help with the practical steps of the process, but we can't advise you on which permit category to choose.</p>
+          <ol class="substeps">
+            <li><strong>Your employer starts the application.</strong> They fill in their part on the Single Permit Portal and send it to you.</li>
+            <li><strong>Add your details.</strong> Fill in your part and upload your documents.</li>
+            <li><strong>Pay the fee.</strong> Either you or your employer can pay.</li>
+            <li><strong>Your employer submits it.</strong> They check everything and send it in. If they miss the deadline, the application is withdrawn.</li>
+          </ol>
         </div>
       </li>
       <li class="step" data-open="true">
         <div class="step-head">
           <span class="step-num">2</span>
           <div class="step-titles">
-            <h3>Pay the fees</h3>
-            <p>See what you need to pay and how</p>
+            <h3>Document check</h3>
+            <p>Your documents are checked and you're invited for biometrics</p>
           </div>
           <button class="toggle" type="button" aria-expanded="true">View more <span class="chev">▾</span></button>
         </div>
         <div class="step-body">
-          <p>The government fee is paid directly to the relevant tax authority, either online or at a bank.</p>
-          <p>A separate service fee is paid in local currency when you attend your appointment.</p>
-          <p>Fees are not refunded, whatever the outcome of your application.</p>
+          <ol class="substeps">
+            <li><strong>Identità checks your documents.</strong> If something is missing, it comes back to you and your employer to fix. If you're not eligible, or it gets sent back too many times, it's refused.</li>
+            <li><strong>Get your invitation letter.</strong> Once everything is in order, your application is registered and you're sent a biometrics invitation letter.</li>
+          </ol>
         </div>
       </li>
       <li class="step" data-open="true">
         <div class="step-head">
           <span class="step-num">3</span>
           <div class="step-titles">
-            <h3>Book an appointment</h3>
-            <p>Pick a centre and a time that suits you</p>
+            <h3>Visa centre appointment</h3>
+            <p>Book, attend, and give your biometrics</p>
           </div>
           <button class="toggle" type="button" aria-expanded="true">View more <span class="chev">▾</span></button>
         </div>
         <div class="step-body">
-          <p>Once your online application is submitted, <a href="#">book an appointment</a> to give your biometrics. A confirmation email will follow — bring it with you on the day.</p>
-          <p>Applying as a family or group? Each person needs their own appointment, and you should mention that you're part of a group.</p>
+          <ol class="substeps">
+            <li><strong>Book your appointment.</strong> Use your invitation letter to book at the VFS centre.</li>
+            <li><strong>Go to your appointment.</strong> Some people are asked to do an interview. If you fail the interview, it may be refused.</li>
+            <li><strong>Give your biometrics.</strong> These are taken at the centre and sent on for your card.</li>
+          </ol>
         </div>
       </li>
       <li class="step" data-open="true">
         <div class="step-head">
           <span class="step-num">4</span>
           <div class="step-titles">
-            <h3>Attend your appointment</h3>
-            <p>Give your biometrics in person</p>
+            <h3>Checks and approval</h3>
+            <p>Background checks, then conditional approval</p>
           </div>
           <button class="toggle" type="button" aria-expanded="true">View more <span class="chev">▾</span></button>
         </div>
         <div class="step-body">
-          <p>Your identity will be checked against the documents uploaded with your online application, so bring the originals. If you paid the government fee online, make sure the payment receipt is attached to your application.</p>
-          <p>After your biometrics are taken, the migration authority may invite you to a short remote interview.</p>
-          <p>Read <a href="#">what to expect on the day</a>.</p>
+          <ol class="substeps">
+            <li><strong>Background checks.</strong> Police and other checks run at the same time. If any don't clear, it may be refused.</li>
+            <li><strong>Get your conditional approval.</strong> If you need a visa, it's issued and you collect it. If not, you just get the approval.</li>
+          </ol>
         </div>
       </li>
       <li class="step" data-open="true">
         <div class="step-head">
           <span class="step-num">5</span>
           <div class="step-titles">
-            <h3>Follow your application</h3>
-            <p>Check progress at any time</p>
+            <h3>Arrive in Malta and get your card</h3>
+            <p>Travel, finish your documents, and collect your card</p>
           </div>
           <button class="toggle" type="button" aria-expanded="true">View more <span class="chev">▾</span></button>
         </div>
         <div class="step-body">
-          <p>Progress updates and the final decision appear in your <a href="#">online portal account</a> and are also sent by email.</p>
-          <p>Centre staff can't share any extra information about where your application is in the process.</p>
-        </div>
-      </li>
-      <li class="step" data-open="true">
-        <div class="step-head">
-          <span class="step-num">6</span>
-          <div class="step-titles">
-            <h3>Collect your permit</h3>
-            <p>Bring the ID document you applied with</p>
-          </div>
-          <button class="toggle" type="button" aria-expanded="true">View more <span class="chev">▾</span></button>
-        </div>
-        <div class="step-body">
-          <p>When your permit card arrives, collect it in person and bring your original passport so your identity can be confirmed.</p>
-          <p>Check the centre's opening hours before you go.</p>
+          <ol class="substeps">
+            <li><strong>Travel to Malta.</strong></li>
+            <li><strong>Upload any extra documents within 2 months.</strong> Missing this deadline may lead to a refusal.</li>
+            <li><strong>Book your card collection.</strong> You'll get a letter with a booking link.</li>
+            <li><strong>Collect your card.</strong> Bring your original documents. If something isn't right, you can update them and book again.</li>
+          </ol>
         </div>
       </li>
     </ol>
+
+    <section class="refused">
+      <h2>If you're refused</h2>
+      <p>You'll get a refusal letter. If you already have a visa or card, it may be cancelled.</p>
+    </section>
 
     <section class="cards" aria-label="Quick actions">
       <div class="card">
